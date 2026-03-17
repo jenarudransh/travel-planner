@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India Travel Route Planner - Ultimate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header class="glass-header">
+        <h1><i class="fa-solid fa-map-location-dot"></i>Travel Planner</h1>
+        <p>Real-time Trip Economics</p>
+    </header>
+
+    <div class="main-container">
+        <div class="control-panel glass-panel">
+            <h3><i class="fa-solid fa-plane-departure"></i> Plan Your Journey</h3>
+            
+            <div class="form-group">
+                <label><i class="fa-solid fa-location-dot" style="color: #2ecc71;"></i> Start City</label>
+                <select id="startCity"><option value="">Select or Click Map...</option></select>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fa-solid fa-flag-checkered" style="color: #e74c3c;"></i> Destination City</label>
+                <select id="destCity"><option value="">Select or Click Map...</option></select>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fa-solid fa-microchip" style="color: #9b59b6;"></i> Algorithm</label>
+                <select id="algoSelect">
+                    <option value="astar">A* Search (Heuristic/Fast)</option>
+                    <option value="dijkstra">Dijkstra's (Exploratory)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fa-solid fa-scale-balanced" style="color: #3498db;"></i> Optimize By</label>
+                <select id="optimizeBy">
+                    <option value="dist">Shortest Distance (km)</option>
+                    <option value="time">Fastest Travel Time (hrs)</option>
+                </select>
+            </div>
+
+            <div class="instruction-text">
+                <i class="fa-solid fa-circle-info"></i> <b>Pro Tip:</b> Right-Click any road on the map to block/unblock it (simulates traffic).
+            </div>
+
+            <button class="btn-search" id="searchBtn" onclick="startVisualization()">
+                <i class="fa-solid fa-route"></i> Calculate Route
+            </button>
+
+            <div id="resultBox" class="result-box">
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <i class="fa-solid fa-road" style="color: #3498db;"></i>
+                        <span class="stat-label">Distance</span>
+                        <span id="resDistance" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-clock" style="color: #f1c40f;"></i>
+                        <span class="stat-label">Time</span>
+                        <span id="resTime" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-indian-rupee-sign" style="color: #2ecc71;"></i>
+                        <span class="stat-label">Est. Fuel Cost</span>
+                        <span id="resCost" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-leaf" style="color: #27ae60;"></i>
+                        <span class="stat-label">CO₂ Footprint</span>
+                        <span id="resCO2" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-gas-pump" style="color: #e74c3c;"></i>
+                        <span class="stat-label">Pumps & Food</span>
+                        <span id="resAmenities" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-eye" style="color: #9b59b6;"></i>
+                        <span class="stat-label">Nodes Explored</span>
+                        <span id="resExplored" class="stat-value">0</span>
+                    </div>
+                </div>
+                
+                <div class="route-display-container">
+                    <label>Recommended Route:</label>
+                    <div id="resPath" class="path-display"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-container glass-panel">
+            <div id="tooltip"></div>
+            <canvas id="graph-canvas"></canvas>
+        </div>
+    </div>
+
+</body>
+</html>
