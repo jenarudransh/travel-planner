@@ -137,3 +137,12 @@ button.btn-search:active { transform: translateY(1px); }
 @keyframes popIn {
     to { opacity: 1; transform: scale(1); }
 }
+
+/* Add to bottom of style.css */
+.btn-secondary {
+    background: transparent; border: 1px dashed var(--accent); color: var(--accent);
+    border-radius: 4px; cursor: pointer; transition: 0.2s; width: 100%;
+}
+.btn-secondary:hover { background: rgba(56, 189, 248, 0.1); }
+.stat-card span:first-child { font-size: 0.8em; color: var(--text-muted); display: block; }
+.stat-card span:last-child { font-weight: bold; font-size: 1.1em; color: var(--text); }
